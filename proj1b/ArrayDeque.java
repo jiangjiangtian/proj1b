@@ -1,4 +1,4 @@
-public class ArrayDeque<T> {
+public class ArrayDeque<T> implements Deque<T>{
     private int size;//The real size of the list.
     private T[] items;//The core array of the deque.
     private int first;//This variable is an index that points at the first item in the array.
@@ -12,6 +12,7 @@ public class ArrayDeque<T> {
         size = 0;
     }
 
+    @Override
     public void addFirst(T x){
         if(size == 0) {
             items[first] = x;
@@ -31,6 +32,7 @@ public class ArrayDeque<T> {
         size++;
     }
 
+    @Override
     public void addLast(T x){
         if(size == 0) {
             items[last] = x;
@@ -55,6 +57,7 @@ public class ArrayDeque<T> {
         size++;
     }
 
+    @Override
     public T get(int index){
         if(index > size || index < 0){
             return null;
@@ -67,7 +70,7 @@ public class ArrayDeque<T> {
         }
     }
 
-    public void resize(int capacity){
+    private void resize(int capacity){
         T[] a = (T[]) new Object[capacity];
         if(last > first){
             System.arraycopy(items,first,a,a.length / 2, size);
@@ -83,6 +86,7 @@ public class ArrayDeque<T> {
         this.UsageRatio = (double)size / items.length;
     }
 
+    @Override
     public T removeFirst(){
         T x = items[first];
         if(size > 1){
@@ -106,6 +110,7 @@ public class ArrayDeque<T> {
         return x;
     }
 
+    @Override
     public T removeLast(){
         T x = items[last];
         items[last] = null;
@@ -127,10 +132,12 @@ public class ArrayDeque<T> {
         return x;
     }
 
+    @Override
     public int size(){
         return size;
     }
 
+    @Override
     public boolean isEmpty(){
         if(size == 0){
             return true;
@@ -138,6 +145,7 @@ public class ArrayDeque<T> {
         return false;
     }
 
+    @Override
     public void printDeque(){
         if(last >= first){
             for(int i = first; i <= last; i++){
