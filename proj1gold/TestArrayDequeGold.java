@@ -14,13 +14,13 @@ public class TestArrayDequeGold {
                 actual.addFirst(i);
                 a = actual.removeFirst();
                 e = expected.removeFirst();
-                assertEquals("addFirst(" + i + ")\naddFirst(" + i + ")\n", e, a);
+                assertEquals("addFirst(" + i + ")\naddFirst(" + i + ")\nget()", e, a);
             } else {
               expected.addLast(i);
               actual.addLast(i);
               a = actual.get(actual.size() - 1);
               e = expected.getLast();
-              assertEquals("addLast(" + i + ")\naddLast(" + i + ")\n", e, a);
+              assertEquals("addLast(" + i + ")\naddLast(" + i + ")\nget()", e, a);
             }
         }
         int len = expected.size();
